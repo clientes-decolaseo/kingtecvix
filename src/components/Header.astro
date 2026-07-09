@@ -1,6 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import logo from '../assets/logo.png';
+import { SITE_NAME } from '../consts';
 
 const whatsappUrl =
 	'https://wa.me/5527997441969?text=' +
@@ -18,10 +19,10 @@ const navItems = [
 
 <header class="sticky top-0 z-50 border-b border-slate-100 bg-background/95 backdrop-blur-sm">
 	<div class="container-site flex items-center justify-between gap-4 py-4">
-		<a href="/" aria-label="KingTecVix — página inicial">
+		<a href="/" aria-label={`${SITE_NAME} — página inicial`}>
 			<Image
 				src={logo}
-				alt="Logo KingTecVix"
+				alt={`Logo ${SITE_NAME}`}
 				width={300}
 				height={120}
 				format="webp"

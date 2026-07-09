@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import CookieConsent from '../components/CookieConsent.astro';
+import { SITE_NAME } from '../consts';
 
 interface Props {
 	title: string;
@@ -15,8 +16,8 @@ const ogImageURL = new URL(ogImage, Astro.site);
 const organizationSchema = {
 	'@context': 'https://schema.org',
 	'@type': 'Organization',
-	name: 'KingTecVix Comércio de Informática LTDA',
-	alternateName: 'KingTecVix',
+	name: `${SITE_NAME} Comércio de Informática LTDA`,
+	alternateName: SITE_NAME,
 	url: 'https://kingtecvix.com.br',
 	logo: 'https://kingtecvix.com.br/wp-content/uploads/2024/11/logo-kingtech.png',
 	taxID: '62.658.277/0001-63',

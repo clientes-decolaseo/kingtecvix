@@ -8,11 +8,12 @@ import About from '../components/About.astro';
 import Testimonials from '../components/Testimonials.astro';
 import FaqAccordion from '../components/FaqAccordion.astro';
 import Footer from '../components/Footer.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 ---
 
 <Layout
-	title="KingTevVix - Notebooks Seminovos com 50% off"
-	description="Notebooks seminovos de alta qualidade com Nota Fiscal, Garantia e Entrega em Domicílio, em até 12x no cartão"
+	title={SITE_TITLE}
+	description={SITE_DESCRIPTION}
 	ogImage="/og-image.png"
 >
 	<Header />
