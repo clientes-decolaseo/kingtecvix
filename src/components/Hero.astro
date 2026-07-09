@@ -1,5 +1,6 @@
 ---
 import HeroVideoFacade from './HeroVideoFacade.astro';
+import whatsappIcon from '../assets/icons/whatsapp.svg?raw';
 
 const heroWhatsappUrl =
 	'https://wa.me/5527997441969?text=' +
@@ -21,29 +22,32 @@ const heroWhatsappUrl =
 			</p>
 			<div class="hero-actions">
 				<a
-					class="btn-primary"
+					class="btn-primary hero-cta"
 					href={heroWhatsappUrl}
 					target="_blank"
 					rel="noopener noreferrer"
 				>
 					Confira os modelos disponíveis
+					<span class="btn-icon" aria-hidden="true" set:html={whatsappIcon} />
 				</a>
 				<a class="hero-secondary" href="#modelos">Saiba mais ↓</a>
 			</div>
 		</div>
-		<HeroVideoFacade />
+		<div class="hero-media">
+			<HeroVideoFacade />
+		</div>
 	</div>
 </section>
 
 <style>
 	.hero {
 		position: relative;
-		padding: 4rem 0 5rem;
+		padding: 2.5rem 0 3.5rem;
 		background: linear-gradient(
-			90deg,
+			180deg,
 			#3d9be8 0%,
-			#5eb3ef 38%,
-			#8ecbf5 72%,
+			#5eb3ef 42%,
+			#8ecbf5 78%,
 			#b5dff9 100%
 		);
 	}
@@ -54,6 +58,11 @@ const heroWhatsappUrl =
 		inset: 0 auto 0 0;
 		width: 5px;
 		background: #2076c9;
+		display: none;
+	}
+
+	.hero-media {
+		display: none;
 	}
 
 	.hero-inner {
@@ -62,16 +71,9 @@ const heroWhatsappUrl =
 		align-items: center;
 	}
 
-	@media (min-width: 48rem) {
-		.hero-inner {
-			grid-template-columns: 1fr 1fr;
-			gap: 2.5rem;
-		}
-	}
-
 	.hero-title {
-		font-size: clamp(1.875rem, 5vw, 3rem);
-		line-height: 1.15;
+		font-size: clamp(1.75rem, 7vw, 3rem);
+		line-height: 1.2;
 		max-width: 36rem;
 		color: #fff;
 	}
@@ -79,29 +81,91 @@ const heroWhatsappUrl =
 	.hero-subtitle {
 		margin-top: 1.25rem;
 		max-width: 34rem;
-		font-size: clamp(1rem, 2.5vw, 1.125rem);
+		font-size: clamp(0.975rem, 2.5vw, 1.125rem);
 		line-height: 1.7;
 		color: rgb(255 255 255 / 0.92);
 	}
 
 	.hero-actions {
-		margin-top: 2rem;
+		margin-top: 1.75rem;
 		display: flex;
-		flex-wrap: wrap;
-		gap: 1rem;
-		align-items: center;
+		flex-direction: column;
+		align-items: stretch;
+		gap: 0.875rem;
+	}
+
+	.hero-cta {
+		width: 100%;
+		padding: 0.875rem 1.25rem;
+	}
+
+	.btn-icon :global(svg) {
+		display: block;
+		width: 1.125rem;
+		height: 1.125rem;
+		flex-shrink: 0;
+	}
+
+	.btn-icon :global(svg title) {
+		display: none;
 	}
 
 	.hero-secondary {
-		color: #e8f6ff;
+		color: #d8f1ff;
 		font-weight: 600;
 		text-decoration: none;
-		padding: 0.75rem 0.25rem;
+		padding: 0.25rem;
+		text-align: center;
 	}
 
 	.hero-secondary:hover {
 		color: #fff;
 		text-decoration: underline;
 		text-underline-offset: 0.2em;
+	}
+
+	@media (min-width: 48rem) {
+		.hero {
+			padding: 4rem 0 5rem;
+			background: linear-gradient(
+				90deg,
+				#3d9be8 0%,
+				#5eb3ef 38%,
+				#8ecbf5 72%,
+				#b5dff9 100%
+			);
+		}
+
+		.hero::before {
+			display: block;
+		}
+
+		.hero-media {
+			display: block;
+		}
+
+		.hero-inner {
+			grid-template-columns: 1fr 1fr;
+			gap: 2.5rem;
+		}
+
+		.hero-title {
+			line-height: 1.15;
+		}
+
+		.hero-actions {
+			flex-direction: row;
+			flex-wrap: wrap;
+			align-items: center;
+			margin-top: 2rem;
+		}
+
+		.hero-cta {
+			width: auto;
+		}
+
+		.hero-secondary {
+			text-align: left;
+		}
 	}
 </style>
