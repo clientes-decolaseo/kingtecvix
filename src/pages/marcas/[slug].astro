@@ -4,12 +4,19 @@ import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import NotebookCard from '../../components/NotebookCard.astro';
+import StockNotice from '../../components/StockNotice.astro';
 import { SITE_NAME } from '../../consts';
 import note1 from '../../assets/notebooks/note1.jpeg';
 import note2 from '../../assets/notebooks/note2.jpeg';
 import note3 from '../../assets/notebooks/note3.jpeg';
 import note4 from '../../assets/notebooks/note4.jpeg';
 import note5 from '../../assets/notebooks/note5.jpeg';
+import hpProbookI5 from '../../assets/notebooks/hp-probook-i5.jpg';
+import lenovoThinkpadX250 from '../../assets/notebooks/lenovo-thinkpad-x250.jpg';
+import dellI5Novo from '../../assets/notebooks/dell-i5-novo.jpg';
+import acerPentium16pol from '../../assets/notebooks/acer-pentium-16pol.jpg';
+import lenovo16polI5 from '../../assets/notebooks/lenovo-16pol-i5.jpg';
+import asusVivobookI5 from '../../assets/notebooks/asus-vivobook-i5.jpg';
 import type { CollectionEntry } from 'astro:content';
 
 const imageMap = {
@@ -18,6 +25,12 @@ const imageMap = {
 	'note3.jpeg': note3,
 	'note4.jpeg': note4,
 	'note5.jpeg': note5,
+	'hp-probook-i5.jpg': hpProbookI5,
+	'lenovo-thinkpad-x250.jpg': lenovoThinkpadX250,
+	'dell-i5-novo.jpg': dellI5Novo,
+	'acer-pentium-16pol.jpg': acerPentium16pol,
+	'lenovo-16pol-i5.jpg': lenovo16polI5,
+	'asus-vivobook-i5.jpg': asusVivobookI5,
 } as const;
 
 export async function getStaticPaths() {
@@ -76,6 +89,7 @@ const whatsappUrl =
 				hasStock ? (
 					<section class="brand-section" aria-labelledby="stock-title">
 						<h2 id="stock-title">Modelos disponíveis</h2>
+						<StockNotice />
 						<div class="notebooks-grid">
 							{brandNotebooks.map((notebook) => {
 								const image = imageMap[notebook.data.image as keyof typeof imageMap];

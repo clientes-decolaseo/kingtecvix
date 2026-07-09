@@ -1,11 +1,18 @@
 ---
 import { getCollection } from 'astro:content';
 import NotebookCard from './NotebookCard.astro';
+import StockNotice from './StockNotice.astro';
 import note1 from '../assets/notebooks/note1.jpeg';
 import note2 from '../assets/notebooks/note2.jpeg';
 import note3 from '../assets/notebooks/note3.jpeg';
 import note4 from '../assets/notebooks/note4.jpeg';
 import note5 from '../assets/notebooks/note5.jpeg';
+import hpProbookI5 from '../assets/notebooks/hp-probook-i5.jpg';
+import lenovoThinkpadX250 from '../assets/notebooks/lenovo-thinkpad-x250.jpg';
+import dellI5Novo from '../assets/notebooks/dell-i5-novo.jpg';
+import acerPentium16pol from '../assets/notebooks/acer-pentium-16pol.jpg';
+import lenovo16polI5 from '../assets/notebooks/lenovo-16pol-i5.jpg';
+import asusVivobookI5 from '../assets/notebooks/asus-vivobook-i5.jpg';
 
 const imageMap = {
 	'note1.jpeg': note1,
@@ -13,6 +20,12 @@ const imageMap = {
 	'note3.jpeg': note3,
 	'note4.jpeg': note4,
 	'note5.jpeg': note5,
+	'hp-probook-i5.jpg': hpProbookI5,
+	'lenovo-thinkpad-x250.jpg': lenovoThinkpadX250,
+	'dell-i5-novo.jpg': dellI5Novo,
+	'acer-pentium-16pol.jpg': acerPentium16pol,
+	'lenovo-16pol-i5.jpg': lenovo16polI5,
+	'asus-vivobook-i5.jpg': asusVivobookI5,
 } as const;
 
 const notebooks = (await getCollection('notebooks')).sort(
@@ -25,6 +38,8 @@ const notebooks = (await getCollection('notebooks')).sort(
 		<p class="section-eyebrow">Marcas e Modelos</p>
 		<h2 id="notebooks-title" class="section-title">Trabalhamos com as Melhores Marcas do Mercado</h2>
 		<p class="section-lead">Dividimos em até 12x</p>
+
+		<StockNotice />
 
 		<div class="notebooks-grid">
 			{

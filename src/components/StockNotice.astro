@@ -1,0 +1,59 @@
+---
+---
+
+<aside class="stock-notice" role="note" aria-label="Aviso sobre preços e disponibilidade">
+	<div class="stock-notice-icon" aria-hidden="true">
+		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+			<path
+				d="M22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12Z"
+				stroke="currentColor"
+				stroke-width="1.5"></path>
+			<path d="M12 11V16" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"></path>
+			<circle cx="12" cy="8" r="0.75" fill="currentColor"></circle>
+		</svg>
+	</div>
+	<p class="stock-notice-text">
+		Os preços dos notebooks seminovos começam a partir de <strong>R$ 1.199,00</strong>. Os modelos
+		exibidos no site estão sujeitos à disponibilidade de estoque no momento do contato — fale com a
+		gente no WhatsApp para confirmar o modelo e o valor atual.
+	</p>
+</aside>
+
+<style>
+	.stock-notice {
+		display: flex;
+		align-items: flex-start;
+		gap: 0.875rem;
+		margin-bottom: 2rem;
+		padding: 1rem 1.125rem;
+		border: 1px solid color-mix(in srgb, var(--color-accent-text) 28%, white);
+		border-radius: 0.875rem;
+		background: color-mix(in srgb, var(--color-accent) 12%, white);
+	}
+
+	.stock-notice-icon {
+		flex-shrink: 0;
+		width: 1.5rem;
+		height: 1.5rem;
+		margin-top: 0.1rem;
+		color: var(--color-accent-text);
+	}
+
+	.stock-notice-icon svg {
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+
+	.stock-notice-text {
+		margin: 0;
+		font-size: 0.9375rem;
+		line-height: 1.65;
+		color: color-mix(in srgb, var(--color-text) 88%, white);
+	}
+
+	.stock-notice-text strong {
+		color: var(--color-text);
+		font-weight: 600;
+	}
+</style>

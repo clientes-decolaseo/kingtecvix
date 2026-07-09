@@ -1,7 +1,7 @@
 {
 	"slug": "acer",
 	"name": "Acer",
-	"hasStock": false,
+	"hasStock": true,
 	"intro": "A Acer oferece notebooks com boa relação custo-benefício, sendo bastante popular tanto em modelos de entrada quanto em linhas voltadas para jogos e tarefas gráficas.",
 	"knownLines": ["Aspire (uso geral)", "Nitro (linha gamer)"],
 	"idealFor": "Quem procura um notebook acessível para estudo, trabalho ou entretenimento, com boas opções em diferentes faixas de desempenho."
