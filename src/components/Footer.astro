@@ -13,8 +13,8 @@ const whatsappUrl =
 				2026 © KINGTECVIX COMERCIO DE INFORMATICA LTDA. CNPJ 62.658.277/0001-63. Todos os direitos
 				reservados
 			</p>
-			<p id="politica-privacidade" class="footer-privacy">
-				Política de Privacidade — em breve.
+			<p class="footer-privacy">
+				<a href="/politica-privacidade">Política de Privacidade</a>
 			</p>
 		</div>
 		<a class="btn-primary" href={whatsappUrl} target="_blank" rel="noopener noreferrer">
@@ -53,7 +53,16 @@ const whatsappUrl =
 	.footer-privacy {
 		margin: 0;
 		font-size: 0.85rem;
+	}
+
+	.footer-privacy a {
 		color: color-mix(in srgb, var(--color-text) 65%, white);
+		text-decoration: underline;
+		text-underline-offset: 2px;
+	}
+
+	.footer-privacy a:hover {
+		color: var(--color-accent-text);
 	}
 
 	@media (min-width: 768px) {

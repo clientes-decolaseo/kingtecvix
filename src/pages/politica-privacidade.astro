@@ -1,0 +1,206 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { SITE_NAME } from '../consts';
+
+const pageTitle = `Política de Privacidade | ${SITE_NAME}`;
+const pageDescription =
+	'Política de Privacidade do site KingTecVix. Saiba como coletamos, usamos e protegemos seus dados em conformidade com a LGPD.';
+const lastUpdated = new Date().toLocaleDateString('pt-BR', {
+	day: 'numeric',
+	month: 'long',
+	year: 'numeric',
+});
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+	<Header />
+	<main class="privacy-page">
+		<article class="privacy-content">
+			<h1>Política de Privacidade</h1>
+
+			<p class="privacy-updated">Última atualização: {lastUpdated}</p>
+
+			<h2>1. Quem somos</h2>
+			<p>
+				Esta Política de Privacidade se aplica ao site kingtecvix.com.br, operado por KingTecVix
+				Comércio de Informática LTDA, CNPJ 62.658.277/0001-63, doravante "KingTecVix", "nós" ou
+				"nosso site".
+			</p>
+			<p>
+				Esta política explica como coletamos, usamos e protegemos os dados pessoais dos visitantes
+				do nosso site, em conformidade com a Lei Geral de Proteção de Dados (Lei nº 13.709/2018 —
+				LGPD).
+			</p>
+
+			<h2>2. Quais dados coletamos</h2>
+			<p>
+				O site KingTecVix não possui formulários de cadastro, login de usuário ou processamento de
+				pagamentos diretamente na página. Toda negociação de compra é feita por contato direto via
+				WhatsApp, fora da nossa plataforma web.
+			</p>
+			<p>
+				No entanto, ao navegar pelo site, coletamos automaticamente, por meio de cookies de terceiros
+				(mediante seu consentimento prévio):
+			</p>
+			<ul>
+				<li>Dados de navegação (páginas visitadas, tempo de permanência, origem do acesso)</li>
+				<li>Identificadores de dispositivo e cookies para fins estatísticos e publicitários</li>
+				<li>Dados agregados de comportamento, coletados pelo Google Analytics</li>
+				<li>Dados para remarketing e mensuração de campanhas, coletados pelo Google Ads</li>
+			</ul>
+			<p>
+				Não coletamos dados sensíveis (como origem racial, convicção religiosa, dados de saúde,
+				biometria) através deste site.
+			</p>
+
+			<h2>3. Como usamos os cookies</h2>
+			<p>
+				Utilizamos um banner de consentimento de cookies. Nenhum cookie de análise ou publicidade é
+				carregado antes da sua decisão explícita. Você pode:
+			</p>
+			<ul>
+				<li>
+					<strong>Aceitar</strong>: permite o carregamento do Google Tag Manager, que por sua vez
+					ativa o Google Analytics (GA4) e o Google Ads/DoubleClick
+				</li>
+				<li>
+					<strong>Recusar</strong>: nenhum cookie de análise ou publicidade é carregado, e sua
+					navegação segue normalmente sem rastreamento
+				</li>
+			</ul>
+			<p>
+				Sua escolha fica salva no seu navegador (localStorage) e será respeitada em visitas futuras,
+				até que você limpe os dados do navegador ou altere sua decisão.
+			</p>
+
+			<h2>4. Com quem compartilhamos dados</h2>
+			<p>
+				Os dados coletados por cookies (quando você consente) são processados pelas seguintes
+				empresas, sob suas próprias políticas de privacidade:
+			</p>
+			<ul>
+				<li>
+					<strong>Google LLC</strong> (Google Analytics, Google Tag Manager, Google Ads) —
+					<a
+						href="https://policies.google.com/privacy?hl=pt-BR"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						política de privacidade do Google
+					</a>
+				</li>
+			</ul>
+			<p>
+				Não vendemos, alugamos ou compartilhamos seus dados pessoais com terceiros para fins
+				diferentes dos descritos nesta política.
+			</p>
+
+			<h2>5. Base legal para o tratamento de dados</h2>
+			<p>
+				Tratamos seus dados com base no seu <strong>consentimento</strong> (Art. 7º, I da LGPD),
+				obtido através do banner de cookies, para as finalidades de análise estatística e
+				publicidade direcionada.
+			</p>
+
+			<h2>6. Seus direitos como titular de dados</h2>
+			<p>De acordo com o Art. 18 da LGPD, você tem direito a:</p>
+			<ul>
+				<li>Confirmação da existência de tratamento de seus dados</li>
+				<li>Acesso aos dados que temos sobre você</li>
+				<li>Correção de dados incompletos, inexatos ou desatualizados</li>
+				<li>Anonimização, bloqueio ou eliminação de dados desnecessários</li>
+				<li>Revogação do seu consentimento a qualquer momento</li>
+				<li>Informação sobre com quem compartilhamos seus dados</li>
+			</ul>
+			<p>
+				Para exercer qualquer um desses direitos, entre em contato conosco pelo WhatsApp:
+				<a href="https://wa.me/5527997441969" target="_blank" rel="noopener noreferrer">
+					+55 27 99744-1969
+				</a>
+			</p>
+
+			<h2>7. Retenção de dados</h2>
+			<p>
+				Os dados coletados por cookies são mantidos pelo tempo definido nas políticas de retenção do
+				Google Analytics e Google Ads (tipicamente entre 14 e 26 meses, conforme configuração padrão
+				dessas ferramentas), ou até que você revogue seu consentimento.
+			</p>
+
+			<h2>8. Alterações nesta política</h2>
+			<p>
+				Esta política pode ser atualizada periodicamente para refletir mudanças em nossas práticas ou
+				por exigência legal. A data da última atualização está sempre indicada no topo desta página.
+			</p>
+
+			<h2>9. Contato</h2>
+			<p>
+				Para dúvidas sobre esta Política de Privacidade ou sobre o tratamento dos seus dados, fale
+				conosco pelo WhatsApp:
+				<a href="https://wa.me/5527997441969" target="_blank" rel="noopener noreferrer">
+					+55 27 99744-1969
+				</a>
+			</p>
+		</article>
+	</main>
+	<Footer />
+</Layout>
+
+<style>
+	.privacy-page {
+		padding: 4rem 1rem 5rem;
+	}
+
+	.privacy-content {
+		max-width: 45rem;
+		margin-inline: auto;
+	}
+
+	.privacy-content h1 {
+		font-size: clamp(1.75rem, 4vw, 2.25rem);
+		line-height: 1.2;
+		color: var(--color-text);
+		margin-bottom: 0.5rem;
+	}
+
+	.privacy-updated {
+		margin: 0 0 2.5rem;
+		font-size: 0.9rem;
+		color: color-mix(in srgb, var(--color-text) 70%, white);
+	}
+
+	.privacy-content h2 {
+		font-size: 1.25rem;
+		color: var(--color-text);
+		margin: 2rem 0 0.75rem;
+	}
+
+	.privacy-content p {
+		margin: 0 0 1rem;
+		line-height: 1.7;
+		color: color-mix(in srgb, var(--color-text) 90%, white);
+	}
+
+	.privacy-content ul {
+		margin: 0 0 1rem 1.25rem;
+		padding: 0;
+		line-height: 1.7;
+		color: color-mix(in srgb, var(--color-text) 90%, white);
+	}
+
+	.privacy-content li + li {
+		margin-top: 0.5rem;
+	}
+
+	.privacy-content a {
+		color: var(--color-text);
+		font-weight: 600;
+		text-decoration: underline;
+		text-underline-offset: 2px;
+	}
+
+	.privacy-content a:hover {
+		color: var(--color-accent-text);
+	}
+</style>
