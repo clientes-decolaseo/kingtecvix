@@ -26,7 +26,7 @@ const heroWhatsappUrl =
 				>
 					Confira os modelos disponíveis
 				</a>
-				<a class="hero-secondary" href="#modelos">Saiba mais</a>
+				<a class="hero-secondary" href="#modelos">Saiba mais ↓</a>
 			</div>
 		</div>
 	</div>
@@ -34,8 +34,23 @@ const heroWhatsappUrl =
 
 <style>
 	.hero {
+		position: relative;
 		padding: 4rem 0 5rem;
-		background: linear-gradient(180deg, #f8fbff 0%, var(--color-background) 100%);
+		background: linear-gradient(
+			90deg,
+			#3d9be8 0%,
+			#5eb3ef 38%,
+			#8ecbf5 72%,
+			#b5dff9 100%
+		);
+	}
+
+	.hero::before {
+		content: '';
+		position: absolute;
+		inset: 0 auto 0 0;
+		width: 5px;
+		background: #2076c9;
 	}
 
 	.hero-inner {
@@ -47,6 +62,7 @@ const heroWhatsappUrl =
 		font-size: clamp(1.875rem, 5vw, 3rem);
 		line-height: 1.15;
 		max-width: 52rem;
+		color: #fff;
 	}
 
 	.hero-subtitle {
@@ -54,7 +70,7 @@ const heroWhatsappUrl =
 		max-width: 42rem;
 		font-size: clamp(1rem, 2.5vw, 1.125rem);
 		line-height: 1.7;
-		color: color-mix(in srgb, var(--color-text) 85%, white);
+		color: rgb(255 255 255 / 0.92);
 	}
 
 	.hero-actions {
@@ -66,16 +82,15 @@ const heroWhatsappUrl =
 	}
 
 	.hero-secondary {
-		color: var(--color-text);
+		color: #e8f6ff;
 		font-weight: 600;
 		text-decoration: none;
-		padding: 0.75rem 1.25rem;
-		border: 2px solid color-mix(in srgb, var(--color-text) 15%, white);
-		border-radius: var(--radius-button);
+		padding: 0.75rem 0.25rem;
 	}
 
 	.hero-secondary:hover {
-		border-color: var(--color-accent);
-		color: var(--color-accent);
+		color: #fff;
+		text-decoration: underline;
+		text-underline-offset: 0.2em;
 	}
 </style>
