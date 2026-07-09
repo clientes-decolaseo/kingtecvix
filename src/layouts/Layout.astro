@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import CookieConsent from '../components/CookieConsent.astro';
+import FloatingWhatsApp from '../components/FloatingWhatsApp.astro';
 import { SITE_NAME } from '../consts';
 
 interface Props {
@@ -83,6 +84,7 @@ const organizationSchema = {
 	</head>
 	<body>
 		<slot />
+		<FloatingWhatsApp />
 		<CookieConsent />
 	</body>
 </html>
