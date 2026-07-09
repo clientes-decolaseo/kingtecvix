@@ -1,0 +1,84 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+	title: string;
+	specs: string;
+	whatsappMessage: string;
+	image: ImageMetadata;
+}
+
+const { title, specs, whatsappMessage, image } = Astro.props;
+
+const whatsappUrl =
+	'https://wa.me/5527997441969?text=' + encodeURIComponent(whatsappMessage);
+---
+
+<article class="notebook-card">
+	<Image
+		src={image}
+		alt={`Foto do notebook ${title}`}
+		width={370}
+		height={278}
+		format="webp"
+		quality={75}
+		loading="lazy"
+		class="notebook-image"
+	/>
+	<div class="notebook-body">
+		<h3 class="notebook-title">{title}</h3>
+		<p class="notebook-specs">{specs}</p>
+		<a
+			class="btn-primary notebook-cta"
+			href={whatsappUrl}
+			target="_blank"
+			rel="noopener noreferrer"
+		>
+			Confira disponibilidade
+		</a>
+	</div>
+</article>
+
+<style>
+	.notebook-card {
+		display: flex;
+		flex-direction: column;
+		height: 100%;
+		border: 1px solid #e2e8f0;
+		border-radius: 1rem;
+		overflow: hidden;
+		background: var(--color-background);
+		box-shadow: 0 8px 24px rgb(16 33 104 / 6%);
+	}
+
+	.notebook-image {
+		width: 100%;
+		height: auto;
+		aspect-ratio: 4 / 3;
+		object-fit: cover;
+	}
+
+	.notebook-body {
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+		padding: 1.25rem;
+		flex: 1;
+	}
+
+	.notebook-title {
+		font-size: 1.25rem;
+	}
+
+	.notebook-specs {
+		flex: 1;
+		line-height: 1.6;
+		color: color-mix(in srgb, var(--color-text) 80%, white);
+	}
+
+	.notebook-cta {
+		width: 100%;
+		font-size: 0.95rem;
+	}
+</style>

@@ -22,3 +22,9 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# local reference files
+reference-source.html
+
+# lighthouse reports
+lighthouse-report.json

@@ -1,0 +1,88 @@
+---
+import { getCollection } from 'astro:content';
+
+const faqItems = (await getCollection('faq')).sort((a, b) => a.data.order - b.data.order);
+const faqSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: faqItems.map((item) => ({
+		'@type': 'Question',
+		name: item.data.question,
+		acceptedAnswer: {
+			'@type': 'Answer',
+			text: item.data.answer,
+		},
+	})),
+};
+---
+
+<section id="faq" class="section-faq" aria-labelledby="faq-title">
+	<div class="container-site">
+		<p class="section-eyebrow">Perguntas frequentes</p>
+		<h2 id="faq-title" class="section-title">Principais dúvidas dos clientes</h2>
+
+		<div class="faq-list">
+			{
+				faqItems.map((item) => (
+					<details class="faq-item">
+						<summary>{item.data.question}</summary>
+						<p>{item.data.answer}</p>
+					</details>
+				))
+			}
+		</div>
+	</div>
+</section>
+<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+<style>
+	.section-faq {
+		padding: 5rem 0;
+	}
+
+	.faq-list {
+		margin-top: 2rem;
+		display: grid;
+		gap: 0.75rem;
+	}
+
+	.faq-item {
+		border: 1px solid #e2e8f0;
+		border-radius: 0.875rem;
+		padding: 0 1.25rem;
+		background: var(--color-background);
+	}
+
+	.faq-item summary {
+		list-style: none;
+		cursor: pointer;
+		font-weight: 600;
+		padding: 1.1rem 2rem 1.1rem 0;
+		position: relative;
+	}
+
+	.faq-item summary::-webkit-details-marker {
+		display: none;
+	}
+
+	.faq-item summary::after {
+		content: '+';
+		position: absolute;
+		right: 0;
+		top: 50%;
+		transform: translateY(-50%);
+		font-size: 1.5rem;
+		line-height: 1;
+		color: var(--color-accent);
+	}
+
+	.faq-item[open] summary::after {
+		content: '−';
+	}
+
+	.faq-item p {
+		margin: 0 0 1.25rem;
+		line-height: 1.7;
+		color: color-mix(in srgb, var(--color-text) 85%, white);
+	}
+</style>

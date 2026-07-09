@@ -1,0 +1,88 @@
+@import "tailwindcss";
+
+@font-face {
+	font-family: "Poppins";
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+	src: url("/fonts/poppins-400.woff2") format("woff2");
+}
+
+@font-face {
+	font-family: "Poppins";
+	font-style: normal;
+	font-weight: 600;
+	font-display: swap;
+	src: url("/fonts/poppins-600.woff2") format("woff2");
+}
+
+@theme {
+	--color-background: #FFFFFF;
+	--color-text: #102168;
+	--color-accent: #24CC63;
+	--color-accent-text: #15803D;
+	--color-accent-hover: #20B859;
+	--font-sans: "Poppins", sans-serif;
+	--radius-button: 70px;
+}
+
+body {
+	font-family: var(--font-sans);
+	font-weight: 400;
+	color: var(--color-text);
+	background-color: var(--color-background);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-weight: 600;
+}
+
+@layer base {
+	html {
+		scroll-behavior: smooth;
+	}
+}
+
+@layer components {
+	.container-site {
+		width: min(100% - 2rem, 72rem);
+		margin-inline: auto;
+	}
+
+	.btn-primary {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.5rem;
+		border-radius: var(--radius-button);
+		background-color: var(--color-accent-text);
+		color: #ffffff;
+		font-weight: 600;
+		padding: 0.75rem 1.5rem;
+		text-decoration: none;
+		transition: background-color 0.2s ease;
+	}
+
+	.btn-primary:hover {
+		background-color: var(--color-accent-hover);
+	}
+
+	.section-eyebrow {
+		color: var(--color-accent-text);
+		font-weight: 600;
+		font-size: 0.875rem;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+	}
+
+	.section-title {
+		font-size: clamp(1.75rem, 4vw, 2.5rem);
+		line-height: 1.2;
+		color: var(--color-text);
+	}
+}

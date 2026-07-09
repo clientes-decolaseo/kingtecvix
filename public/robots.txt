@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://kingtecvix.com.br/sitemap-index.xml

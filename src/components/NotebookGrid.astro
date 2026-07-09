@@ -1,0 +1,66 @@
+---
+import { getCollection } from 'astro:content';
+import NotebookCard from './NotebookCard.astro';
+import note1 from '../assets/notebooks/note1.jpeg';
+import note2 from '../assets/notebooks/note2.jpeg';
+import note3 from '../assets/notebooks/note3.jpeg';
+import note4 from '../assets/notebooks/note4.jpeg';
+import note5 from '../assets/notebooks/note5.jpeg';
+
+const imageMap = {
+	'note1.jpeg': note1,
+	'note2.jpeg': note2,
+	'note3.jpeg': note3,
+	'note4.jpeg': note4,
+	'note5.jpeg': note5,
+} as const;
+
+const notebooks = (await getCollection('notebooks')).sort(
+	(a, b) => a.data.order - b.data.order,
+);
+---
+
+<section id="modelos" class="section-notebooks" aria-labelledby="notebooks-title">
+	<div class="container-site">
+		<p class="section-eyebrow">Marcas e Modelos</p>
+		<h2 id="notebooks-title" class="section-title">Trabalhamos com as Melhores Marcas do Mercado</h2>
+		<p class="section-lead">Dividimos em até 12x</p>
+
+		<div class="notebooks-grid">
+			{
+				notebooks.map((notebook) => {
+					const image = imageMap[notebook.data.image as keyof typeof imageMap];
+					if (!image) return null;
+
+					return (
+						<NotebookCard
+							title={notebook.data.title}
+							specs={notebook.data.specs}
+							whatsappMessage={notebook.data.whatsappMessage}
+							image={image}
+						/>
+					);
+				})
+			}
+		</div>
+	</div>
+</section>
+
+<style>
+	.section-notebooks {
+		padding: 5rem 0;
+	}
+
+	.section-lead {
+		margin-top: 0.75rem;
+		margin-bottom: 2.5rem;
+		font-size: 1.125rem;
+		color: color-mix(in srgb, var(--color-text) 80%, white);
+	}
+
+	.notebooks-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+		gap: 1.5rem;
+	}
+</style>

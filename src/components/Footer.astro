@@ -1,0 +1,66 @@
+---
+const whatsappUrl =
+	'https://wa.me/5527997441969?text=' +
+	encodeURIComponent(
+		'Olá! Vim do site e quero mais informações sobre os notebooks seminovos!',
+	);
+---
+
+<footer class="site-footer">
+	<div class="container-site footer-inner">
+		<div class="footer-legal">
+			<p class="footer-copy">
+				2026 © KINGTECVIX COMERCIO DE INFORMATICA LTDA. CNPJ 62.658.277/0001-63. Todos os direitos
+				reservados
+			</p>
+			<p id="politica-privacidade" class="footer-privacy">
+				Política de Privacidade — em breve.
+			</p>
+		</div>
+		<a class="btn-primary" href={whatsappUrl} target="_blank" rel="noopener noreferrer">
+			Fale no WhatsApp
+		</a>
+	</div>
+</footer>
+
+<style>
+	.site-footer {
+		padding: 2.5rem 0;
+		border-top: 1px solid #e2e8f0;
+		background: #f8fbff;
+	}
+
+	.footer-inner {
+		display: flex;
+		flex-direction: column;
+		gap: 1.25rem;
+		align-items: flex-start;
+	}
+
+	.footer-legal {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+
+	.footer-copy {
+		margin: 0;
+		line-height: 1.6;
+		font-size: 0.95rem;
+		color: color-mix(in srgb, var(--color-text) 80%, white);
+	}
+
+	.footer-privacy {
+		margin: 0;
+		font-size: 0.85rem;
+		color: color-mix(in srgb, var(--color-text) 65%, white);
+	}
+
+	@media (min-width: 768px) {
+		.footer-inner {
+			flex-direction: row;
+			align-items: center;
+			justify-content: space-between;
+		}
+	}
+</style>

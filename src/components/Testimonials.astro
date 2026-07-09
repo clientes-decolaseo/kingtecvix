@@ -1,0 +1,59 @@
+---
+import { getCollection } from 'astro:content';
+
+const testimonials = (await getCollection('testimonials')).sort(
+	(a, b) => a.data.order - b.data.order,
+);
+---
+
+<section id="depoimentos" class="section-testimonials" aria-labelledby="testimonials-title">
+	<div class="container-site">
+		<p class="section-eyebrow">Depoimentos</p>
+		<h2 id="testimonials-title" class="section-title">O Que Nossos Clientes Dizem</h2>
+
+		<div class="testimonials-grid">
+			{
+				testimonials.map((testimonial) => (
+					<blockquote class="testimonial-card">
+						<cite>{testimonial.data.name}</cite>
+						<p>{testimonial.data.text}</p>
+					</blockquote>
+				))
+			}
+		</div>
+	</div>
+</section>
+
+<style>
+	.section-testimonials {
+		padding: 5rem 0;
+		background: #f8fbff;
+	}
+
+	.testimonials-grid {
+		margin-top: 2.5rem;
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+		gap: 1.25rem;
+	}
+
+	.testimonial-card {
+		margin: 0;
+		padding: 1.5rem;
+		border-radius: 1rem;
+		border: 1px solid #e2e8f0;
+		background: var(--color-background);
+	}
+
+	.testimonial-card cite {
+		display: block;
+		font-style: normal;
+		font-weight: 600;
+		margin-bottom: 0.75rem;
+	}
+
+	.testimonial-card p {
+		line-height: 1.7;
+		color: color-mix(in srgb, var(--color-text) 85%, white);
+	}
+</style>

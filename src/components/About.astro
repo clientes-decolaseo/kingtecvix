@@ -1,0 +1,125 @@
+---
+import { getCollection } from 'astro:content';
+import securityCheck from '../assets/icons/security-check.svg?raw';
+import packageDelivered from '../assets/icons/package-delivered.svg?raw';
+import keyframesMultiple from '../assets/icons/keyframes-multiple.svg?raw';
+import customerSupport from '../assets/icons/customer-support.svg?raw';
+
+const featureIcons: Record<string, string> = {
+	'processo-de-compra-seguro': securityCheck,
+	'disponibilidade-de-estoque': packageDelivered,
+	'variedade-de-modelos': keyframesMultiple,
+	'suporte-personalizado': customerSupport,
+};
+
+const aboutFeatures = (await getCollection('aboutFeatures')).sort(
+	(a, b) => a.data.order - b.data.order,
+);
+
+const whatsappUrl =
+	'https://wa.me/5527997441969?text=' +
+	encodeURIComponent(
+		'Olá! Vim do site e quero mais informações sobre os notebooks seminovos!',
+	);
+---
+
+<section id="sobre" class="section-about" aria-labelledby="about-title">
+	<div class="container-site about-grid">
+		<div class="about-copy">
+			<p class="section-eyebrow">Quem Somos</p>
+			<h2 id="about-title" class="section-title">KINGTecVix</h2>
+			<div class="about-text">
+				<p>
+					Somos apaixonados por tecnologia e acreditamos que qualidade não precisa custar caro! Há
+					mais de 30 anos conectamos pessoas com Notebooks usados Seminovos que atendem as suas
+					necessidades, sem custar muito caro.
+				</p>
+				<p>
+					Trabalhamos com as principais marcas e modelos do mercado, como Dell, Lenovo, Asus, Acer,
+					Samsung, HP e outras, e todos os nossos equipamentos tem garantia, nota fiscal, além de
+					facilitarmos o pagamento através de parcelamento no cartão! Entregamos gratuitamente em
+					diversas cidades da região, como Vitória, Vila Velha, Cariacica, Serra, Viana, Guarapari,
+					Aracruz, Santa Tereza, Domingos Martins, Fundão, Ibiraçu, Santa Leopoldina e mais.
+				</p>
+				<p>Pague apenas após receber o produto em domicílio e testá-lo!</p>
+			</div>
+			<a class="btn-primary" href={whatsappUrl} target="_blank" rel="noopener noreferrer">
+				Confira os modelos disponíveis
+			</a>
+		</div>
+
+		<div class="about-features">
+			{
+				aboutFeatures.map((feature) => (
+					<article class="feature-card">
+						<div class="card-icon" aria-hidden="true" set:html={featureIcons[feature.id]} />
+						<h3>{feature.data.title}</h3>
+						<p>{feature.data.description}</p>
+					</article>
+				))
+			}
+		</div>
+	</div>
+</section>
+
+<style>
+	.section-about {
+		padding: 5rem 0;
+	}
+
+	.about-grid {
+		display: grid;
+		gap: 2.5rem;
+	}
+
+	.about-text {
+		display: grid;
+		gap: 1rem;
+		margin: 1.25rem 0 1.75rem;
+		line-height: 1.7;
+		color: color-mix(in srgb, var(--color-text) 85%, white);
+	}
+
+	.about-features {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+		gap: 1rem;
+	}
+
+	.feature-card {
+		padding: 1.25rem;
+		border-radius: 1rem;
+		border: 1px solid #e2e8f0;
+		background: #f8fbff;
+	}
+
+	.card-icon {
+		width: 32px;
+		height: 32px;
+		margin-bottom: 0.75rem;
+		color: var(--color-accent-text);
+	}
+
+	.card-icon :global(svg) {
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+
+	.feature-card h3 {
+		font-size: 1.05rem;
+		margin-bottom: 0.5rem;
+	}
+
+	.feature-card p {
+		line-height: 1.6;
+		color: color-mix(in srgb, var(--color-text) 80%, white);
+	}
+
+	@media (min-width: 960px) {
+		.about-grid {
+			grid-template-columns: 1.1fr 0.9fr;
+			align-items: start;
+		}
+	}
+</style>

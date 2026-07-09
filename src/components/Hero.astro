@@ -1,0 +1,81 @@
+---
+const heroWhatsappUrl =
+	'https://wa.me/5527997441969?text=' +
+	encodeURIComponent(
+		'Olá, vi seu anúncio no site e gostaria de saber mais informações sobre os notebooks usados.',
+	);
+---
+
+<section class="hero" aria-labelledby="hero-title">
+	<div class="container-site hero-inner">
+		<div class="hero-content">
+			<h1 id="hero-title" class="hero-title">
+				Notebooks seminovos de alta qualidade com Nota Fiscal, Garantia e Entrega em Domicílio, em até
+				12x no cartão
+			</h1>
+			<p class="hero-subtitle">
+				Há mais de 30 anos oferecendo produtos de qualidade por valores justos e acessíveis. As
+				melhores marcas e modelos por até 50% do valor de mercado!
+			</p>
+			<div class="hero-actions">
+				<a
+					class="btn-primary"
+					href={heroWhatsappUrl}
+					target="_blank"
+					rel="noopener noreferrer"
+				>
+					Confira os modelos disponíveis
+				</a>
+				<a class="hero-secondary" href="#modelos">Saiba mais</a>
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	.hero {
+		padding: 4rem 0 5rem;
+		background: linear-gradient(180deg, #f8fbff 0%, var(--color-background) 100%);
+	}
+
+	.hero-inner {
+		display: grid;
+		gap: 2rem;
+	}
+
+	.hero-title {
+		font-size: clamp(1.875rem, 5vw, 3rem);
+		line-height: 1.15;
+		max-width: 52rem;
+	}
+
+	.hero-subtitle {
+		margin-top: 1.25rem;
+		max-width: 42rem;
+		font-size: clamp(1rem, 2.5vw, 1.125rem);
+		line-height: 1.7;
+		color: color-mix(in srgb, var(--color-text) 85%, white);
+	}
+
+	.hero-actions {
+		margin-top: 2rem;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1rem;
+		align-items: center;
+	}
+
+	.hero-secondary {
+		color: var(--color-text);
+		font-weight: 600;
+		text-decoration: none;
+		padding: 0.75rem 1.25rem;
+		border: 2px solid color-mix(in srgb, var(--color-text) 15%, white);
+		border-radius: var(--radius-button);
+	}
+
+	.hero-secondary:hover {
+		border-color: var(--color-accent);
+		color: var(--color-accent);
+	}
+</style>
