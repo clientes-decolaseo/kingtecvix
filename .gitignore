@@ -29,4 +29,7 @@ reference-source.html
 # lighthouse reports
 lighthouse-report.json
 
+# local scripts with secrets
+fetch-blog-covers.mjs
+
 .vercel
