@@ -1,0 +1,89 @@
+---
+import { Image } from 'astro:assets';
+import heroVideoThumb from '../assets/hero-video-thumb.jpg';
+
+const videoUrl = 'https://www.youtube.com/watch?v=tnIFHs2Y12A';
+---
+
+<a
+	class="hero-video-facade"
+	href={videoUrl}
+	aria-label="Assistir vídeo da KingTecVix no YouTube"
+>
+	<Image
+		src={heroVideoThumb}
+		alt="Thumbnail do vídeo institucional da KingTecVix no YouTube"
+		width={640}
+		height={360}
+		format="webp"
+		quality={80}
+		loading="eager"
+		fetchpriority="high"
+		class="hero-video-thumb"
+	/>
+	<span class="hero-video-play" aria-hidden="true">
+		<span class="hero-video-play-button">
+			<span class="hero-video-play-icon"></span>
+		</span>
+	</span>
+</a>
+
+<style>
+	.hero-video-facade {
+		position: relative;
+		display: block;
+		border-radius: 0.75rem;
+		overflow: hidden;
+		box-shadow: 0 12px 32px rgb(16 33 104 / 0.2);
+		text-decoration: none;
+	}
+
+	.hero-video-facade:focus-visible {
+		outline: 3px solid #fff;
+		outline-offset: 3px;
+	}
+
+	.hero-video-thumb {
+		display: block;
+		width: 100%;
+		height: auto;
+		aspect-ratio: 16 / 9;
+		object-fit: cover;
+	}
+
+	.hero-video-play {
+		position: absolute;
+		inset: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background: rgb(0 0 0 / 0.1);
+		transition: background 0.2s ease;
+	}
+
+	.hero-video-facade:hover .hero-video-play,
+	.hero-video-facade:focus-visible .hero-video-play {
+		background: rgb(0 0 0 / 0.2);
+	}
+
+	.hero-video-play-button {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 4.5rem;
+		height: 4.5rem;
+		border-radius: 50%;
+		background: #e62117;
+		box-shadow: 0 4px 16px rgb(0 0 0 / 0.35);
+	}
+
+	.hero-video-play-icon {
+		display: block;
+		width: 0;
+		height: 0;
+		margin-left: 0.3rem;
+		border-style: solid;
+		border-width: 0.7rem 0 0.7rem 1.15rem;
+		border-color: transparent transparent transparent #fff;
+	}
+</style>

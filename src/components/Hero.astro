@@ -1,4 +1,6 @@
 ---
+import HeroVideoFacade from './HeroVideoFacade.astro';
+
 const heroWhatsappUrl =
 	'https://wa.me/5527997441969?text=' +
 	encodeURIComponent(
@@ -29,6 +31,7 @@ const heroWhatsappUrl =
 				<a class="hero-secondary" href="#modelos">Saiba mais ↓</a>
 			</div>
 		</div>
+		<HeroVideoFacade />
 	</div>
 </section>
 
@@ -56,18 +59,26 @@ const heroWhatsappUrl =
 	.hero-inner {
 		display: grid;
 		gap: 2rem;
+		align-items: center;
+	}
+
+	@media (min-width: 48rem) {
+		.hero-inner {
+			grid-template-columns: 1fr 1fr;
+			gap: 2.5rem;
+		}
 	}
 
 	.hero-title {
 		font-size: clamp(1.875rem, 5vw, 3rem);
 		line-height: 1.15;
-		max-width: 52rem;
+		max-width: 36rem;
 		color: #fff;
 	}
 
 	.hero-subtitle {
 		margin-top: 1.25rem;
-		max-width: 42rem;
+		max-width: 34rem;
 		font-size: clamp(1rem, 2.5vw, 1.125rem);
 		line-height: 1.7;
 		color: rgb(255 255 255 / 0.92);
