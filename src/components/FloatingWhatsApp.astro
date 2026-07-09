@@ -64,12 +64,12 @@ const whatsappUrl =
 		}
 	}
 
-	body:has(#cookie-consent:not([hidden])) .floating-whatsapp {
+	.floating-whatsapp.banner-visible {
 		bottom: 9.5rem;
 	}
 
 	@media (min-width: 48rem) {
-		body:has(#cookie-consent:not([hidden])) .floating-whatsapp {
+		.floating-whatsapp.banner-visible {
 			bottom: 6.5rem;
 		}
 	}

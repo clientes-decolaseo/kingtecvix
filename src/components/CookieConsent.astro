@@ -28,13 +28,21 @@
 	(function () {
 		var STORAGE_KEY = 'cookie-consent';
 		var banner = document.getElementById('cookie-consent');
+		var floatingWhatsApp = document.getElementById('floating-whatsapp');
+
+		function syncFloatingWhatsApp(isBannerVisible) {
+			if (!floatingWhatsApp) return;
+			floatingWhatsApp.classList.toggle('banner-visible', isBannerVisible);
+		}
 
 		function hideBanner() {
 			if (banner) banner.hidden = true;
+			syncFloatingWhatsApp(false);
 		}
 
 		function showBanner() {
 			if (banner) banner.hidden = false;
+			syncFloatingWhatsApp(true);
 		}
 
 		function scheduleGTM() {
