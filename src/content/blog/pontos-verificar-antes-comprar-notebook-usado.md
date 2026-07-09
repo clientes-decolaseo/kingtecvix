@@ -3,6 +3,8 @@ title: "7 Pontos Para Verificar Antes de Comprar um Notebook Usado"
 description: "Checklist prático com os principais itens que você deve conferir na bateria, tela, teclado e desempenho antes de fechar a compra de um notebook usado."
 pubDate: 2026-07-22
 tags: ["guia-de-compra", "checklist"]
+coverImage: "../../assets/blog/pontos-verificar-antes-comprar-notebook-usado.jpg"
+coverImageAlt: "Close-up do teclado de um notebook"
 ---
 
 Comprar um notebook usado sem saber o que verificar é a forma mais comum de se arrepender da compra. A boa notícia é que a maioria dos problemas é fácil de identificar — basta saber onde olhar. Separamos os 7 pontos que mais importam.

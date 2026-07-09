@@ -3,6 +3,8 @@ title: "Notebook Seminovo Vale a Pena? Guia Completo Antes de Comprar"
 description: "Entenda quando comprar um notebook seminovo é a escolha certa, quanto você economiza de verdade e o que observar antes de fechar negócio."
 pubDate: 2026-07-15
 tags: ["guia-de-compra", "notebook-seminovo"]
+coverImage: "../../assets/blog/notebook-seminovo-vale-a-pena.jpg"
+coverImageAlt: "Pessoa trabalhando em um notebook em um ambiente de escritório"
 ---
 
 Se você está pesquisando "notebook seminovo vale a pena", provavelmente já percebeu que os preços de notebooks novos não param de subir — e está se perguntando se um modelo usado consegue entregar o que você precisa sem os problemas que todo mundo teme: bateria fraca, tela com defeito, ou um computador que já chega perto do fim da vida útil.

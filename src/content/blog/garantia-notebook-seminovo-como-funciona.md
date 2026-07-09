@@ -3,6 +3,8 @@ title: "Notebook Seminovo Com Garantia: Como Funciona e Por Que Importa"
 description: "Entenda como funciona a garantia em notebooks seminovos, o que ela cobre e por que esse é o fator mais importante na hora de decidir onde comprar."
 pubDate: 2026-07-29
 tags: ["garantia", "guia-de-compra"]
+coverImage: "../../assets/blog/garantia-notebook-seminovo-como-funciona.jpg"
+coverImageAlt: "Técnico realizando manutenção em um notebook"
 ---
 
 De todas as dúvidas que aparecem na hora de comprar um notebook usado, a garantia é a que mais pesa na decisão — e faz total sentido. Sem ela, qualquer defeito que apareça depois da compra vira um problema exclusivamente seu.

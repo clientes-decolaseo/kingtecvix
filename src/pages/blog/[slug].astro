@@ -1,4 +1,5 @@
 ---
+import { getImage, Image } from 'astro:assets';
 import { getCollection, render } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
@@ -22,8 +23,18 @@ interface Props {
 }
 
 const { post } = Astro.props;
-const { title, description, pubDate } = post.data;
+const { title, description, pubDate, coverImage, coverImageAlt } = post.data;
 const { Content } = await render(post);
+
+const ogImage = (
+	await getImage({
+		src: coverImage,
+		width: 1200,
+		height: 630,
+		format: 'webp',
+		quality: 80,
+	})
+).src;
 
 const pageTitle = `${title} | Blog ${SITE_NAME}`;
 const formattedDate = pubDate.toLocaleDateString('pt-BR', {
@@ -51,7 +62,7 @@ const blogPostingSchema = {
 };
 ---
 
-<Layout title={pageTitle} description={description}>
+<Layout title={pageTitle} description={description} ogImage={ogImage}>
 	<script slot="head" type="application/ld+json" set:html={JSON.stringify(blogPostingSchema)} />
 	<Header />
 	<main class="blog-post-page">
@@ -66,6 +77,17 @@ const blogPostingSchema = {
 
 			<article>
 				<header class="blog-post-header">
+					<Image
+						src={coverImage}
+						alt={coverImageAlt}
+						width={1200}
+						height={630}
+						format="webp"
+						quality={80}
+						loading="eager"
+						fetchpriority="high"
+						class="blog-post-cover"
+					/>
 					<h1>{title}</h1>
 					<time datetime={pubDate.toISOString()}>{formattedDate}</time>
 				</header>
@@ -125,7 +147,15 @@ const blogPostingSchema = {
 		font-size: clamp(1.75rem, 4vw, 2.25rem);
 		line-height: 1.2;
 		color: var(--color-text);
-		margin-bottom: 0.5rem;
+		margin: 1.25rem 0 0.5rem;
+	}
+
+	.blog-post-cover {
+		width: 100%;
+		height: auto;
+		aspect-ratio: 1200 / 630;
+		object-fit: cover;
+		border-radius: 1rem;
 	}
 
 	.blog-post-header time {
