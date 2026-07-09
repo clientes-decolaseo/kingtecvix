@@ -1,0 +1,8 @@
+{
+	"slug": "hp",
+	"name": "HP",
+	"hasStock": false,
+	"intro": "A HP é uma das marcas mais tradicionais do mercado de informática, com linhas corporativas reconhecidas pela confiabilidade em ambientes de trabalho.",
+	"knownLines": ["ProBook (linha corporativa)", "EliteBook (linha corporativa premium)", "Pavilion (uso geral)"],
+	"idealFor": "Quem busca um notebook confiável para uso profissional, com histórico consolidado em ambientes corporativos."
+}

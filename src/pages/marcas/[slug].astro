@@ -1,0 +1,193 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import NotebookCard from '../../components/NotebookCard.astro';
+import { SITE_NAME } from '../../consts';
+import note1 from '../../assets/notebooks/note1.jpeg';
+import note2 from '../../assets/notebooks/note2.jpeg';
+import note3 from '../../assets/notebooks/note3.jpeg';
+import note4 from '../../assets/notebooks/note4.jpeg';
+import note5 from '../../assets/notebooks/note5.jpeg';
+import type { CollectionEntry } from 'astro:content';
+
+const imageMap = {
+	'note1.jpeg': note1,
+	'note2.jpeg': note2,
+	'note3.jpeg': note3,
+	'note4.jpeg': note4,
+	'note5.jpeg': note5,
+} as const;
+
+export async function getStaticPaths() {
+	const brands = await getCollection('brands');
+
+	return brands.map((brand) => ({
+		params: { slug: brand.data.slug },
+		props: { brand },
+	}));
+}
+
+interface Props {
+	brand: CollectionEntry<'brands'>;
+}
+
+const { brand } = Astro.props;
+const { name, hasStock, intro, knownLines, idealFor } = brand.data;
+
+const pageTitle = `Notebooks ${name} Seminovos | ${SITE_NAME}`;
+const pageDescription = intro;
+
+const brandNotebooks = hasStock
+	? (await getCollection('notebooks'))
+			.filter((notebook) => notebook.data.title.includes(name))
+			.sort((a, b) => a.data.order - b.data.order)
+	: [];
+
+const whatsappUrl =
+	'https://wa.me/5527997441969?text=' +
+	encodeURIComponent(
+		`Olá! Vim do site e gostaria de saber sobre notebooks ${name} seminovos disponíveis.`,
+	);
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+	<Header />
+	<main class="brand-page">
+		<div class="container-site brand-content">
+			<p class="section-eyebrow">Marca</p>
+			<h1>Notebooks {name} Seminovos</h1>
+			<p class="brand-intro">{intro}</p>
+
+			<section class="brand-section" aria-labelledby="known-lines-title">
+				<h2 id="known-lines-title">Linhas conhecidas</h2>
+				<ul>
+					{knownLines.map((line) => <li>{line}</li>)}
+				</ul>
+			</section>
+
+			<section class="brand-section" aria-labelledby="ideal-for-title">
+				<h2 id="ideal-for-title">Ideal para</h2>
+				<p>{idealFor}</p>
+			</section>
+
+			{
+				hasStock ? (
+					<section class="brand-section" aria-labelledby="stock-title">
+						<h2 id="stock-title">Modelos disponíveis</h2>
+						<div class="notebooks-grid">
+							{brandNotebooks.map((notebook) => {
+								const image = imageMap[notebook.data.image as keyof typeof imageMap];
+								if (!image) return null;
+
+								return (
+									<NotebookCard
+										title={notebook.data.title}
+										specs={notebook.data.specs}
+										whatsappMessage={notebook.data.whatsappMessage}
+										image={image}
+									/>
+								);
+							})}
+						</div>
+					</section>
+				) : (
+					<section class="brand-cta-box" aria-labelledby="availability-title">
+						<h2 id="availability-title" class="visually-hidden">Disponibilidade</h2>
+						<p>
+							Nosso estoque de {name} está sempre girando. Fale agora no WhatsApp e confirme a
+							disponibilidade atual de modelos {name} seminovos, a partir de R$ 1.199.
+						</p>
+						<a class="btn-primary" href={whatsappUrl} target="_blank" rel="noopener noreferrer">
+							Fale no WhatsApp
+						</a>
+					</section>
+				)
+			}
+		</div>
+	</main>
+	<Footer />
+</Layout>
+
+<style>
+	.brand-page {
+		padding: 4rem 0 5rem;
+	}
+
+	.brand-content {
+		max-width: 45rem;
+	}
+
+	.brand-content h1 {
+		font-size: clamp(1.75rem, 4vw, 2.5rem);
+		line-height: 1.2;
+		color: var(--color-text);
+		margin-bottom: 1rem;
+	}
+
+	.brand-intro {
+		margin: 0 0 2.5rem;
+		line-height: 1.7;
+		font-size: 1.125rem;
+		color: color-mix(in srgb, var(--color-text) 90%, white);
+	}
+
+	.brand-section {
+		margin-bottom: 2.5rem;
+	}
+
+	.brand-section h2 {
+		font-size: 1.25rem;
+		color: var(--color-text);
+		margin-bottom: 0.75rem;
+	}
+
+	.brand-section p,
+	.brand-section ul {
+		margin: 0;
+		line-height: 1.7;
+		color: color-mix(in srgb, var(--color-text) 90%, white);
+	}
+
+	.brand-section ul {
+		padding-left: 1.25rem;
+	}
+
+	.brand-section li + li {
+		margin-top: 0.5rem;
+	}
+
+	.notebooks-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+		gap: 1.5rem;
+		max-width: none;
+	}
+
+	.brand-cta-box {
+		padding: 1.5rem;
+		border: 1px solid #e2e8f0;
+		border-radius: 1rem;
+		background: #f8fbff;
+		box-shadow: 0 8px 24px rgb(16 33 104 / 6%);
+	}
+
+	.brand-cta-box p {
+		margin: 0 0 1.25rem;
+		line-height: 1.7;
+		color: color-mix(in srgb, var(--color-text) 90%, white);
+	}
+
+	.visually-hidden {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		padding: 0;
+		margin: -1px;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+		white-space: nowrap;
+		border: 0;
+	}
+</style>

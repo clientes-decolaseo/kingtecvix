@@ -79,6 +79,7 @@ const organizationSchema = {
 		<meta property="og:type" content="website" />
 		<meta property="og:locale" content="pt_BR" />
 		<script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+		<slot name="head" />
 	</head>
 	<body>
 		<slot />

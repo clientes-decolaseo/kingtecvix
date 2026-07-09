@@ -49,10 +49,34 @@ const faq = defineCollection({
 	}),
 });
 
+const brands = defineCollection({
+	loader: glob({ pattern: '**/*.json', base: './src/content/brands' }),
+	schema: z.object({
+		slug: z.string(),
+		name: z.string(),
+		hasStock: z.boolean(),
+		intro: z.string(),
+		knownLines: z.array(z.string()),
+		idealFor: z.string(),
+	}),
+});
+
+const blog = defineCollection({
+	loader: glob({ pattern: '**/*.md', base: './src/content/blog' }),
+	schema: z.object({
+		title: z.string(),
+		description: z.string(),
+		pubDate: z.coerce.date(),
+		tags: z.array(z.string()).optional(),
+	}),
+});
+
 export const collections = {
 	notebooks,
 	benefits,
 	aboutFeatures,
 	testimonials,
 	faq,
+	brands,
+	blog,
 };

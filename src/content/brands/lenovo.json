@@ -1,0 +1,8 @@
+{
+	"slug": "lenovo",
+	"name": "Lenovo",
+	"hasStock": true,
+	"intro": "A Lenovo é referência mundial em notebooks corporativos, principalmente através da linha ThinkPad — reconhecida pela durabilidade e pelo teclado considerado um dos melhores do mercado.",
+	"knownLines": ["ThinkPad (linha corporativa premium)", "IdeaPad (uso geral)"],
+	"idealFor": "Quem quer um notebook resistente para uso profissional intenso, com histórico comprovado de durabilidade mesmo em modelos com alguns anos de uso."
+}

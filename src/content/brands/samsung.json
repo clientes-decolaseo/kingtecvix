@@ -1,0 +1,8 @@
+{
+	"slug": "samsung",
+	"name": "Samsung",
+	"hasStock": false,
+	"intro": "A Samsung entrega notebooks com bom acabamento e integração facilitada com outros dispositivos da marca, sendo uma opção interessante para quem já usa o ecossistema Samsung.",
+	"knownLines": ["Book (linha principal, várias variações de tamanho e desempenho)"],
+	"idealFor": "Quem já usa outros produtos Samsung e busca integração entre dispositivos, além de um notebook com bom acabamento."
+}

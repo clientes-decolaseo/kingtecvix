@@ -1,0 +1,8 @@
+{
+	"slug": "asus",
+	"name": "Asus",
+	"hasStock": false,
+	"intro": "A Asus é conhecida por equilibrar bom desempenho e preço acessível, com linhas voltadas tanto para uso doméstico quanto para tarefas mais exigentes.",
+	"knownLines": ["Vivobook (uso geral)", "Zenbook (linha premium/ultrafina)", "TUF (linha gamer resistente)"],
+	"idealFor": "Quem busca um notebook versátil, com boas opções tanto para o dia a dia quanto para tarefas mais pesadas."
+}

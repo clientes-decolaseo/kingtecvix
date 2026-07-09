@@ -1,0 +1,8 @@
+{
+	"slug": "dell",
+	"name": "Dell",
+	"hasStock": true,
+	"intro": "A Dell é uma das marcas mais tradicionais do mercado corporativo, com linhas conhecidas pela robustez e facilidade de manutenção — características que fazem os modelos seminovos serem uma escolha especialmente segura.",
+	"knownLines": ["Latitude (linha corporativa)", "Inspiron (uso geral)", "Vostro (pequenas empresas)"],
+	"idealFor": "Quem busca um notebook corporativo confiável, com peças de reposição fáceis de encontrar e boa relação custo-benefício em máquinas seminovas."
+}

@@ -1,0 +1,68 @@
+---
+import { getCollection } from 'astro:content';
+
+const brands = (await getCollection('brands')).sort((a, b) =>
+	a.data.name.localeCompare(b.data.name, 'pt-BR'),
+);
+---
+
+<section id="marcas" class="section-brands" aria-labelledby="brands-title">
+	<div class="container-site">
+		<p class="section-eyebrow">Marcas</p>
+		<h2 id="brands-title" class="section-title">Notebooks Seminovos por Marca</h2>
+		<p class="section-lead">
+			Conheça as marcas que trabalhamos e veja os modelos disponíveis em cada uma.
+		</p>
+
+		<ul class="brands-list">
+			{
+				brands.map((brand) => (
+					<li>
+						<a href={`/marcas/${brand.data.slug}`}>Notebooks {brand.data.name}</a>
+					</li>
+				))
+			}
+		</ul>
+	</div>
+</section>
+
+<style>
+	.section-brands {
+		padding: 5rem 0;
+		background: #f8fbff;
+	}
+
+	.section-lead {
+		margin-top: 0.75rem;
+		margin-bottom: 2rem;
+		font-size: 1.125rem;
+		color: color-mix(in srgb, var(--color-text) 80%, white);
+	}
+
+	.brands-list {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(min(100%, 10rem), 1fr));
+		gap: 0.75rem;
+	}
+
+	.brands-list a {
+		display: block;
+		padding: 0.875rem 1rem;
+		border: 1px solid #e2e8f0;
+		border-radius: 0.75rem;
+		background: var(--color-background);
+		color: var(--color-text);
+		font-weight: 600;
+		text-align: center;
+		text-decoration: none;
+		transition: border-color 0.2s ease, color 0.2s ease;
+	}
+
+	.brands-list a:hover {
+		border-color: var(--color-accent-text);
+		color: var(--color-accent-text);
+	}
+</style>
