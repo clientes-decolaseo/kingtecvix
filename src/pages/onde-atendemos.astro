@@ -1,0 +1,198 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import FaqAccordion from '../components/FaqAccordion.astro';
+import locationIcon from '../assets/icons/location-01.svg?raw';
+import { SITE_NAME } from '../consts';
+
+const pageTitle = 'Onde Atendemos | KingTecVix - Entrega em Toda Grande Vitória';
+const pageDescription =
+	'Entrega gratuita de notebooks seminovos em Vitória, Vila Velha, Cariacica, Serra, Viana, Guarapari, Aracruz e outras cidades da Grande Vitória e região.';
+
+const cities = [
+	'Vitória',
+	'Vila Velha',
+	'Cariacica',
+	'Serra',
+	'Viana',
+	'Guarapari',
+	'Aracruz',
+	'Santa Tereza',
+	'Domingos Martins',
+	'Fundão',
+	'Ibiraçu',
+	'Santa Leopoldina',
+];
+
+const whatsappUrl =
+	'https://wa.me/5527997441969?text=' +
+	encodeURIComponent(
+		'Olá! Vim do site e gostaria de saber se vocês entregam na minha cidade e quais notebooks seminovos estão disponíveis.',
+	);
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+	<Header />
+	<main>
+		<section class="coverage-hero" aria-labelledby="coverage-title">
+			<div class="container-site">
+				<p class="section-eyebrow">Área de atendimento</p>
+				<h1 id="coverage-title">Entregamos Notebooks Seminovos em Toda a Grande Vitória</h1>
+				<div class="coverage-intro">
+					<p>
+						Entregamos gratuitamente em diversas cidades da região, como Vitória, Vila Velha,
+						Cariacica, Serra, Viana, Guarapari, Aracruz, Santa Tereza, Domingos Martins, Fundão,
+						Ibiraçu, Santa Leopoldina e mais.
+					</p>
+					<p>Pague apenas após receber o produto em domicílio e testá-lo!</p>
+				</div>
+				<a class="btn-primary" href={whatsappUrl} target="_blank" rel="noopener noreferrer">
+					Confirme a entrega na sua cidade
+				</a>
+			</div>
+		</section>
+
+		<section class="coverage-cities" aria-labelledby="cities-title">
+			<div class="container-site">
+				<h2 id="cities-title" class="section-title">Cidades atendidas</h2>
+				<p class="section-lead">
+					Confira as principais cidades onde a {SITE_NAME} entrega notebooks seminovos com
+					garantia e nota fiscal.
+				</p>
+				<ul class="cities-grid">
+					{
+						cities.map((city) => (
+							<li class="city-card">
+								<span class="city-icon" aria-hidden="true" set:html={locationIcon} />
+								<span class="city-name">{city}</span>
+							</li>
+						))
+					}
+				</ul>
+			</div>
+		</section>
+
+		<section class="coverage-cta" aria-labelledby="coverage-cta-title">
+			<div class="container-site coverage-cta-inner">
+				<div>
+					<h2 id="coverage-cta-title" class="section-title">Sua cidade está na lista?</h2>
+					<p>
+						Fale conosco no WhatsApp e confirme a disponibilidade de entrega, o modelo e o valor
+						atual do notebook seminovo ideal para você.
+					</p>
+				</div>
+				<a class="btn-primary" href={whatsappUrl} target="_blank" rel="noopener noreferrer">
+					Fale no WhatsApp
+				</a>
+			</div>
+		</section>
+
+		<FaqAccordion />
+	</main>
+	<Footer />
+</Layout>
+
+<style>
+	.coverage-hero {
+		padding: 4rem 0 3.5rem;
+	}
+
+	.coverage-hero h1 {
+		max-width: 42rem;
+		margin-bottom: 1.25rem;
+		font-size: clamp(1.75rem, 4vw, 2.5rem);
+		line-height: 1.2;
+		color: var(--color-text);
+	}
+
+	.coverage-intro {
+		display: grid;
+		gap: 1rem;
+		max-width: 42rem;
+		margin-bottom: 1.75rem;
+	}
+
+	.coverage-intro p {
+		margin: 0;
+		font-size: 1.125rem;
+		line-height: 1.7;
+		color: color-mix(in srgb, var(--color-text) 90%, white);
+	}
+
+	.coverage-cities {
+		padding: 1rem 0 5rem;
+	}
+
+	.section-lead {
+		margin-top: 0.75rem;
+		margin-bottom: 2rem;
+		font-size: 1.125rem;
+		color: color-mix(in srgb, var(--color-text) 80%, white);
+	}
+
+	.cities-grid {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr));
+		gap: 0.875rem;
+	}
+
+	.city-card {
+		display: flex;
+		align-items: center;
+		gap: 0.75rem;
+		padding: 1rem 1.125rem;
+		border: 1px solid #e2e8f0;
+		border-radius: 0.875rem;
+		background: #f8fbff;
+	}
+
+	.city-icon {
+		flex-shrink: 0;
+		width: 1.5rem;
+		height: 1.5rem;
+		color: var(--color-accent-text);
+	}
+
+	.city-icon :global(svg) {
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+
+	.city-name {
+		font-weight: 600;
+		color: var(--color-text);
+	}
+
+	.coverage-cta {
+		padding: 3.5rem 0;
+		background: #f8fbff;
+		border-block: 1px solid #e2e8f0;
+	}
+
+	.coverage-cta-inner {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 1.5rem;
+	}
+
+	.coverage-cta p {
+		max-width: 36rem;
+		margin: 0.75rem 0 0;
+		line-height: 1.7;
+		color: color-mix(in srgb, var(--color-text) 85%, white);
+	}
+
+	@media (min-width: 768px) {
+		.coverage-cta-inner {
+			flex-direction: row;
+			align-items: center;
+			justify-content: space-between;
+		}
+	}
+</style>
