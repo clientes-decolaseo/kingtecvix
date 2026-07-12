@@ -17,13 +17,14 @@ const ogImageURL = new URL(ogImage, Astro.site);
 const logoURL = new URL('/logo-og.png', Astro.site);
 const organizationSchema = {
 	'@context': 'https://schema.org',
-	'@type': 'Organization',
+	'@type': 'ElectronicsStore',
 	name: `${SITE_NAME} Comércio de Informática LTDA`,
 	alternateName: SITE_NAME,
 	url: 'https://kingtecvix.com.br',
 	logo: logoURL.href,
 	taxID: '62.658.277/0001-63',
 	telephone: '+5527997441969',
+	sameAs: ['https://share.google/R9buVGjbEVxnDkspS'],
 	areaServed: [
 		{ '@type': 'City', name: 'Vitória' },
 		{ '@type': 'City', name: 'Vila Velha' },
