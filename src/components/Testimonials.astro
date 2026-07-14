@@ -4,18 +4,39 @@ import { getCollection } from 'astro:content';
 const testimonials = (await getCollection('testimonials')).sort(
 	(a, b) => a.data.order - b.data.order,
 );
+
+const googleReviewsUrl = 'https://share.google/R9buVGjbEVxnDkspS';
 ---
 
 <section id="depoimentos" class="section-testimonials" aria-labelledby="testimonials-title">
 	<div class="container-site">
 		<p class="section-eyebrow">Depoimentos</p>
 		<h2 id="testimonials-title" class="section-title">O Que Nossos Clientes Dizem</h2>
+		<a
+			class="testimonials-google-link"
+			href={googleReviewsUrl}
+			target="_blank"
+			rel="noopener noreferrer"
+		>
+			Ver todas as avaliações no Google
+		</a>
 
 		<div class="testimonials-grid">
 			{
 				testimonials.map((testimonial) => (
 					<blockquote class="testimonial-card">
+						<div
+							class="testimonial-stars"
+							aria-label={`${testimonial.data.rating} de 5 estrelas`}
+						>
+							{Array.from({ length: testimonial.data.rating }, () => (
+								<span class="testimonial-star" aria-hidden="true">
+									★
+								</span>
+							))}
+						</div>
 						<cite>{testimonial.data.name}</cite>
+						<p class="testimonial-source">Avaliação do {testimonial.data.source}</p>
 						<p>{testimonial.data.text}</p>
 					</blockquote>
 				))
@@ -30,8 +51,22 @@ const testimonials = (await getCollection('testimonials')).sort(
 		background: #f8fbff;
 	}
 
+	.testimonials-google-link {
+		display: inline-block;
+		margin-top: 0.875rem;
+		color: var(--color-accent-text);
+		font-weight: 600;
+		font-size: 0.95rem;
+		text-decoration: underline;
+		text-underline-offset: 0.15em;
+	}
+
+	.testimonials-google-link:hover {
+		color: var(--color-accent-hover);
+	}
+
 	.testimonials-grid {
-		margin-top: 2.5rem;
+		margin-top: 2rem;
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
 		gap: 1.25rem;
@@ -45,14 +80,37 @@ const testimonials = (await getCollection('testimonials')).sort(
 		background: var(--color-background);
 	}
 
+	.testimonial-stars {
+		display: flex;
+		gap: 0.15rem;
+		margin-bottom: 0.65rem;
+		color: var(--color-accent-text);
+		font-size: 1.05rem;
+		line-height: 1;
+	}
+
+	.testimonial-star {
+		display: inline-block;
+	}
+
 	.testimonial-card cite {
 		display: block;
 		font-style: normal;
 		font-weight: 600;
-		margin-bottom: 0.75rem;
+		margin-bottom: 0.35rem;
 	}
 
-	.testimonial-card p {
+	.testimonial-source {
+		margin: 0 0 0.85rem;
+		font-size: 0.8rem;
+		font-weight: 600;
+		letter-spacing: 0.02em;
+		text-transform: uppercase;
+		color: color-mix(in srgb, var(--color-text) 55%, white);
+	}
+
+	.testimonial-card p:last-child {
+		margin: 0;
 		line-height: 1.7;
 		color: color-mix(in srgb, var(--color-text) 85%, white);
 	}
