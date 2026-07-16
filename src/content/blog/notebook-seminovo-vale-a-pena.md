@@ -25,7 +25,7 @@ Vale a pena quando:
 - Você compra de um vendedor que testa e garante o equipamento — não de pessoa física sem nenhuma garantia
 
 Merece mais cautela quando:
-- Você precisa de desempenho de ponta para tarefas muito pesadas (edição de vídeo profissional, jogos exigentes) — nesse caso, vale conversar sobre a configuração específica antes
+- Você precisa de desempenho de ponta para tarefas muito pesadas (edição de vídeo profissional, renderização 3D) — nesse caso, vale conversar sobre a configuração específica antes
 - A compra é feita sem qualquer teste prévio ou garantia, direto com desconhecido, sem nota fiscal
 
 ## O que muda entre comprar de pessoa física e de uma loja especializada

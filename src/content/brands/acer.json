@@ -2,7 +2,7 @@
 	"slug": "acer",
 	"name": "Acer",
 	"hasStock": true,
-	"intro": "A Acer oferece notebooks com boa relação custo-benefício, sendo bastante popular tanto em modelos de entrada quanto em linhas voltadas para jogos e tarefas gráficas.",
-	"knownLines": ["Aspire (uso geral)", "Nitro (linha gamer)"],
+	"intro": "A Acer oferece notebooks com boa relação custo-benefício, sendo bastante popular tanto em modelos de entrada quanto em opções mais robustas para tarefas profissionais do dia a dia.",
+	"knownLines": ["Aspire (uso geral)", "TravelMate (linha corporativa)"],
 	"idealFor": "Quem procura um notebook acessível para estudo, trabalho ou entretenimento, com boas opções em diferentes faixas de desempenho."
 }
