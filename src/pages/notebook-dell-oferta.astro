@@ -1,0 +1,19 @@
+---
+import LandingLayout from '../layouts/LandingLayout.astro';
+import LandingOffer from '../components/LandingOffer.astro';
+import { SITE_NAME } from '../consts';
+
+const pageTitle = `Notebook Dell Seminovo em Oferta | ${SITE_NAME}`;
+const pageDescription =
+	'Notebooks Dell seminovos com nota fiscal, garantia de 90 dias e entrega gratuita no Espírito Santo. Confira as ofertas disponíveis.';
+---
+
+<LandingLayout title={pageTitle} description={pageDescription}>
+	<LandingOffer
+		heading="Notebook Dell Seminovo — Preços Imperdíveis com Garantia"
+		subheadline="Procurando notebook Dell? Confira nossas ofertas com nota fiscal, garantia de 90 dias e entrega grátis no Espírito Santo."
+		whatsappMessage="Olá! Vi o anúncio de notebook Dell e quero saber mais!"
+		brandFilter="Dell"
+		modelsTitle="Notebooks Dell disponíveis"
+	/>
+</LandingLayout>

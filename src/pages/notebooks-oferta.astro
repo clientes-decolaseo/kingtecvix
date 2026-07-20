@@ -1,0 +1,18 @@
+---
+import LandingLayout from '../layouts/LandingLayout.astro';
+import LandingOffer from '../components/LandingOffer.astro';
+import { SITE_NAME } from '../consts';
+
+const pageTitle = `Notebooks Seminovos em Oferta | ${SITE_NAME}`;
+const pageDescription =
+	'Notebooks seminovos Dell, Lenovo, Asus, Acer, HP e Samsung com nota fiscal, garantia de 90 dias e entrega gratuita no Espírito Santo. Até 50% mais baratos.';
+---
+
+<LandingLayout title={pageTitle} description={pageDescription}>
+	<LandingOffer
+		heading="Notebooks Seminovos das Melhores Marcas — Até 50% Mais Baratos"
+		subheadline="Dell, Lenovo, Asus, Acer, HP e Samsung. Todos com nota fiscal, garantia de 90 dias e entrega rápida e grátis no Espírito Santo."
+		whatsappMessage="Olá! Vi o anúncio e quero aproveitar a oferta de notebooks seminovos!"
+		modelsTitle="Confira os notebooks disponíveis"
+	/>
+</LandingLayout>

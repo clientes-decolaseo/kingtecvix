@@ -1,0 +1,247 @@
+---
+import { getCollection } from 'astro:content';
+import NotebookCard from './NotebookCard.astro';
+import StockNotice from './StockNotice.astro';
+import Testimonials from './Testimonials.astro';
+import FaqAccordion from './FaqAccordion.astro';
+import whatsappIcon from '../assets/icons/whatsapp.svg?raw';
+import note1 from '../assets/notebooks/note1.jpeg';
+import note2 from '../assets/notebooks/note2.jpeg';
+import note3 from '../assets/notebooks/note3.jpeg';
+import note4 from '../assets/notebooks/note4.jpeg';
+import note5 from '../assets/notebooks/note5.jpeg';
+import hpProbookI5 from '../assets/notebooks/hp-probook-i5.jpg';
+import lenovoThinkpadX250 from '../assets/notebooks/lenovo-thinkpad-x250.jpg';
+import dellI5Novo from '../assets/notebooks/dell-i5-novo.jpg';
+import acerPentium16pol from '../assets/notebooks/acer-pentium-16pol.jpg';
+import lenovo16polI5 from '../assets/notebooks/lenovo-16pol-i5.jpg';
+import asusVivobookI5 from '../assets/notebooks/asus-vivobook-i5.jpg';
+
+interface Props {
+	heading: string;
+	subheadline: string;
+	whatsappMessage: string;
+	brandFilter?: string;
+	modelsTitle?: string;
+}
+
+const {
+	heading,
+	subheadline,
+	whatsappMessage,
+	brandFilter,
+	modelsTitle = 'Modelos disponíveis',
+} = Astro.props;
+
+const imageMap = {
+	'note1.jpeg': note1,
+	'note2.jpeg': note2,
+	'note3.jpeg': note3,
+	'note4.jpeg': note4,
+	'note5.jpeg': note5,
+	'hp-probook-i5.jpg': hpProbookI5,
+	'lenovo-thinkpad-x250.jpg': lenovoThinkpadX250,
+	'dell-i5-novo.jpg': dellI5Novo,
+	'acer-pentium-16pol.jpg': acerPentium16pol,
+	'lenovo-16pol-i5.jpg': lenovo16polI5,
+	'asus-vivobook-i5.jpg': asusVivobookI5,
+} as const;
+
+const notebooks = (await getCollection('notebooks'))
+	.filter((notebook) => (brandFilter ? notebook.data.title.includes(brandFilter) : true))
+	.sort((a, b) => a.data.order - b.data.order);
+
+const whatsappUrl =
+	'https://wa.me/5527997441969?text=' + encodeURIComponent(whatsappMessage);
+
+const trustItems = [
+	'Garantia 90 dias',
+	'Nota Fiscal',
+	'Entrega Grátis no ES',
+	'Até 12x no Cartão',
+];
+---
+
+<main>
+	<section class="landing-hero" aria-labelledby="landing-title">
+		<div class="container-site">
+			<h1 id="landing-title">{heading}</h1>
+			<p class="landing-subheadline">{subheadline}</p>
+
+			<ul class="landing-trust">
+				{
+					trustItems.map((item) => (
+						<li>
+							<span class="landing-trust-check" aria-hidden="true">
+								✓
+							</span>
+							{item}
+						</li>
+					))
+				}
+			</ul>
+
+			<a class="btn-primary landing-cta" href={whatsappUrl} target="_blank" rel="noopener noreferrer">
+				Falar Agora no WhatsApp
+				<span class="btn-icon" aria-hidden="true" set:html={whatsappIcon} />
+			</a>
+		</div>
+	</section>
+
+	<section class="landing-models" aria-labelledby="landing-models-title">
+		<div class="container-site">
+			<h2 id="landing-models-title" class="section-title">{modelsTitle}</h2>
+			<StockNotice />
+			<div class="landing-grid">
+				{
+					notebooks.map((notebook) => {
+						const image = imageMap[notebook.data.image as keyof typeof imageMap];
+						if (!image) return null;
+
+						return (
+							<NotebookCard
+								title={notebook.data.title}
+								specs={notebook.data.specs}
+								shortLabel={notebook.data.shortLabel}
+								image={image}
+							/>
+						);
+					})
+				}
+			</div>
+		</div>
+	</section>
+
+	<Testimonials />
+	<FaqAccordion />
+
+	<section class="landing-final-cta" aria-labelledby="landing-final-title">
+		<div class="container-site landing-final-inner">
+			<div>
+				<h2 id="landing-final-title" class="section-title">Pronto para garantir o seu?</h2>
+				<p>
+					Fale agora no WhatsApp e confirme o modelo, o valor atual e a entrega na sua cidade.
+				</p>
+			</div>
+			<a class="btn-primary landing-cta" href={whatsappUrl} target="_blank" rel="noopener noreferrer">
+				Falar Agora no WhatsApp
+				<span class="btn-icon" aria-hidden="true" set:html={whatsappIcon} />
+			</a>
+		</div>
+	</section>
+</main>
+
+<style>
+	.landing-hero {
+		padding: 3rem 0 2.5rem;
+		background: linear-gradient(180deg, #3d9be8 0%, #5eb3ef 42%, #8ecbf5 78%, #b5dff9 100%);
+	}
+
+	.landing-hero h1 {
+		max-width: 40rem;
+		margin: 0 0 1rem;
+		font-size: clamp(1.75rem, 5vw, 2.75rem);
+		line-height: 1.2;
+		color: #fff;
+	}
+
+	.landing-subheadline {
+		max-width: 40rem;
+		margin: 0 0 1.5rem;
+		font-size: clamp(1rem, 2.5vw, 1.125rem);
+		line-height: 1.7;
+		color: rgb(255 255 255 / 0.94);
+	}
+
+	.landing-trust {
+		list-style: none;
+		margin: 0 0 1.75rem;
+		padding: 0;
+		display: grid;
+		gap: 0.65rem;
+	}
+
+	.landing-trust li {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		font-weight: 600;
+		color: #fff;
+	}
+
+	.landing-trust-check {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 1.35rem;
+		height: 1.35rem;
+		border-radius: 50%;
+		background: var(--color-accent-text);
+		color: #fff;
+		font-size: 0.75rem;
+		line-height: 1;
+		flex-shrink: 0;
+	}
+
+	.landing-cta {
+		display: inline-flex;
+	}
+
+	.btn-icon :global(svg) {
+		display: block;
+		width: 1.125rem;
+		height: 1.125rem;
+		flex-shrink: 0;
+	}
+
+	.btn-icon :global(svg title) {
+		display: none;
+	}
+
+	.landing-models {
+		padding: 4rem 0 2rem;
+	}
+
+	.landing-models .section-title {
+		margin-bottom: 1.5rem;
+	}
+
+	.landing-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+		gap: 1.5rem;
+	}
+
+	.landing-final-cta {
+		padding: 3.5rem 0;
+		background: #f8fbff;
+		border-block: 1px solid #e2e8f0;
+	}
+
+	.landing-final-inner {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 1.5rem;
+	}
+
+	.landing-final-cta p {
+		max-width: 36rem;
+		margin: 0.75rem 0 0;
+		line-height: 1.7;
+		color: color-mix(in srgb, var(--color-text) 85%, white);
+	}
+
+	@media (min-width: 768px) {
+		.landing-trust {
+			grid-template-columns: repeat(2, minmax(0, max-content));
+			gap: 0.75rem 1.5rem;
+		}
+
+		.landing-final-inner {
+			flex-direction: row;
+			align-items: center;
+			justify-content: space-between;
+		}
+	}
+</style>
