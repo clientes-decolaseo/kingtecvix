@@ -9,6 +9,7 @@ const notebooks = defineCollection({
 		specs: z.string(),
 		image: z.string(),
 		whatsappMessage: z.string(),
+		shortLabel: z.string(),
 		order: z.number(),
 	}),
 });

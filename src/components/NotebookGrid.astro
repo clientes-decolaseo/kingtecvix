@@ -51,7 +51,7 @@ const notebooks = (await getCollection('notebooks')).sort(
 						<NotebookCard
 							title={notebook.data.title}
 							specs={notebook.data.specs}
-							whatsappMessage={notebook.data.whatsappMessage}
+							shortLabel={notebook.data.shortLabel}
 							image={image}
 						/>
 					);
