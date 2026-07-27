@@ -45,13 +45,15 @@
 			syncFloatingWhatsApp(true);
 		}
 
-		function scheduleGTM() {
-			if (typeof window.loadGTM !== 'function') return;
-			if ('requestIdleCallback' in window) {
-				requestIdleCallback(window.loadGTM);
-			} else {
-				setTimeout(window.loadGTM, 2000);
-			}
+		function updateConsent(granted) {
+			if (typeof gtag !== 'function') return;
+
+			gtag('consent', 'update', {
+				ad_storage: granted ? 'granted' : 'denied',
+				ad_user_data: granted ? 'granted' : 'denied',
+				ad_personalization: granted ? 'granted' : 'denied',
+				analytics_storage: granted ? 'granted' : 'denied',
+			});
 		}
 
 		function saveConsent(value) {
@@ -63,12 +65,13 @@
 		}
 
 		function handleAccept() {
+			updateConsent(true);
 			saveConsent('accepted');
 			hideBanner();
-			scheduleGTM();
 		}
 
 		function handleReject() {
+			updateConsent(false);
 			saveConsent('rejected');
 			hideBanner();
 		}
@@ -80,10 +83,7 @@
 			consent = null;
 		}
 
-		if (consent === 'accepted') {
-			hideBanner();
-			scheduleGTM();
-		} else if (consent === 'rejected') {
+		if (consent === 'accepted' || consent === 'rejected') {
 			hideBanner();
 		} else {
 			showBanner();

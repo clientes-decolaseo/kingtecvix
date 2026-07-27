@@ -77,20 +77,45 @@ const organizationSchema = {
 <!doctype html>
 <html lang="pt-BR">
 	<head>
-		<!-- Google Tag Manager (carregado apenas com consentimento) -->
+		<!-- Google Consent Mode v2 + Tag Manager -->
 		<script is:inline>
 			window.dataLayer = window.dataLayer || [];
-			window.loadGTM = function () {
-				if (window._gtmLoaded) return;
-				window._gtmLoaded = true;
-				window.dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
-				var script = document.createElement('script');
-				script.async = true;
-				script.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-TFH8DZC3';
-				document.head.appendChild(script);
-			};
+			function gtag() {
+				dataLayer.push(arguments);
+			}
+
+			// Lê decisão salva anteriormente, se existir
+			var savedConsent = null;
+			try {
+				savedConsent = localStorage.getItem('cookie-consent');
+			} catch (e) {
+				savedConsent = null;
+			}
+			var granted = savedConsent === 'accepted';
+
+			gtag('consent', 'default', {
+				ad_storage: granted ? 'granted' : 'denied',
+				ad_user_data: granted ? 'granted' : 'denied',
+				ad_personalization: granted ? 'granted' : 'denied',
+				analytics_storage: granted ? 'granted' : 'denied',
+				functionality_storage: 'granted',
+				security_storage: 'granted',
+				wait_for_update: 500,
+			});
 		</script>
-		<!-- End Google Tag Manager -->
+		<script is:inline>
+			(function (w, d, s, l, i) {
+				w[l] = w[l] || [];
+				w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+				var f = d.getElementsByTagName(s)[0];
+				var j = d.createElement(s);
+				var dl = l != 'dataLayer' ? '&l=' + l : '';
+				j.async = true;
+				j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+				f.parentNode.insertBefore(j, f);
+			})(window, document, 'script', 'dataLayer', 'GTM-TFH8DZC3');
+		</script>
+		<!-- End Google Consent Mode v2 + Tag Manager -->
 
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
